@@ -1,136 +1,97 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
+import React from 'react'
+
+import { Helmet } from 'react-helmet'
 import useClientApi from '../../hooks/ClientApi';
-import './clients.css';
+import './clients.css'
+import './table.css'
+
 
 const ClientsViewTable = () => {
-  const { clients, loading, error } = useClientApi();
-
-  if (loading) {
-    return <p>Loading...</p>;
-  }
-
-  if (error) {
-    return <p>Error fetching data: {error.message}</p>;
-  }
-
   return (
-    <div className="clients-table">
-      <Helmet>
-        <title>Clients View</title>
-      </Helmet>
-
-      <div className="table-header">
-        <div className="table-header-row">
-          <span className="table-header-text">
-            <span>Nome</span>
-          </span>
-          <span className="table-header-text">
-            <span>Projeto</span>
-          </span>
-          <span className="table-header-text">
-            <span>Telemovel</span>
-          </span>
-          <span className="table-header-text">
-            <span>Email</span>
-          </span>
-          <span className="table-header-text">
-            <span>Status</span>
-          </span>
-        </div>
-        <img
-          alt="Line9I502"
-          src="/external/line9i502-kg8f.svg"
-          className="clients-line9"
-        />
+    <div class="table-container">
+      <div class="table-row heading">
+        <div class="row-item">Category 1</div>
+        <div class="row-item">Category 2</div>
+        <div class="row-item">Category 3</div>
+        <div class="row-item">Category 4</div>
+        <div class="row-item">Category 5</div>
       </div>
-
-      <div className="table-body">
-        {clients.map((client) => (
-          <div key={client.clientId} className="table-body-row">
-            <span className="table-row-text-tertiary">
-              <span>{client.clientId}</span>
-            </span>
-            <span className="table-row-text-primary">
-              <span>{client.firstName} {client.lastName}</span>
-            </span>
-            <span className="table-row-text-primary">{client.qty}</span>
-            <span className="table-row-text-tertiary">
-              <span>{client.orderDate}</span>
-            </span>
-            <span className="table-row-text-secondary">
-              <span>{client.recent}</span>
-            </span>
-            {/* missing status tag with className="table-row-tag-status" */}
-          </div>
-        ))}
+      <div class="table-row">
+        <div class="row-item">Item 1</div>
+        <div class="row-item">Item 2</div>
+        <div class="row-item">Item 3</div>
+        <div class="row-item">Item 4</div>
+        <div class="row-item">Item 5</div>
+      </div>
+      <div class="table-row">
+        <div class="row-item">Item 1</div>
+        <div class="row-item">Item 2</div>
+        <div class="row-item">Item 3</div>
+        <div class="row-item">Item 4</div>
+        <div class="row-sub-container">
+          <div class="row-item">Sub item 1</div>
+          <div class="row-item">Sub item 2</div>
+        </div>
       </div>
     </div>
-  );
-};
-
-const getStatusClass = (status) => {
-  // Add logic to determine the appropriate class based on the status
-  // You can customize this based on your specific requirements
-  switch (status) {
-    case 'Pending':
-      return 'pending';
-    case 'Approved':
-      return 'approved';
-    case 'Paused':
-      return 'paused';
-    default:
-      return '';
-  }
-};
+  )
+}
 
 
 const Clients = (props) => {
+
+  const clients = [
+    { name: 'Client1', projeto: 'Project1', dataDeOrcamento: '2023-01-01', recentes: 'Yes', status: 'Active' },
+    { name: 'Client2', projeto: 'Project2', dataDeOrcamento: '2023-02-01', recentes: 'No', status: 'Inactive' },
+    { name: 'Client3', projeto: 'Project3', dataDeOrcamento: '2023-03-01', recentes: 'Yes', status: 'Active' },
+    { name: 'Client4', projeto: 'Project4', dataDeOrcamento: '2023-04-01', recentes: 'No', status: 'Inactive' },
+  ];
+
   return (
-    <div className="clients-container">
+    <div className="design2-container">
       <Helmet>
-        <title>clients - ProdHub</title>
-        <meta property="og:title" content="clients - ProdHub" />
+        <title>Design2 - ProdHub</title>
+        <meta property="og:title" content="Design2 - ProdHub" />
       </Helmet>
-      <div className="clients-dashboard-design">
-        <div className="clients-dashboard">
-          <span className="clients-text">
+      <div className="design2-dashboard-design">
+        <div className="design2-dashboard">
+          <span className="design2-text">
             <span>Clients</span>
           </span>
         </div>
-        <div className="clients-header">
-          <div className="clients-search-bar">
+        <div className="design2-header">
+          <div className="design2-search-bar">
             <img
               alt="Icon16pxSearchI502"
               src="/external/icon16pxsearchi502-8vh.svg"
-              className="clients-icon16px-search"
+              className="design2-icon16px-search"
             />
-            <span className="clients-text02">
+            <span className="design2-text02">
               <span>Search</span>
             </span>
           </div>
-          <div className="clients-right-side">
-            <div className="clients-icon-bell">
-              <div className="clients-group">
+          <div className="design2-right-side">
+            <div className="design2-icon-bell">
+              <div className="design2-group">
                 <img
                   alt="VectorI502"
                   src="/external/vectori502-4s2.svg"
-                  className="clients-vector"
+                  className="design2-vector"
                 />
                 <img
                   alt="VectorI502"
                   src="/external/vectori502-8vpf.svg"
-                  className="clients-vector1"
+                  className="design2-vector1"
                 />
               </div>
             </div>
-            <div className="clients-user">
-              <div className="clients-left-side">
-                <div className="clients-name">
-                  <span className="clients-text04">
+            <div className="design2-user">
+              <div className="design2-left-side">
+                <div className="design2-name">
+                  <span className="design2-text04">
                     <span>Johny Larsen</span>
                   </span>
-                  <span className="clients-text06">
+                  <span className="design2-text06">
                     <span>Admin</span>
                   </span>
                 </div>
@@ -138,169 +99,167 @@ const Clients = (props) => {
               <img
                 alt="Icon16pxDropdownI502"
                 src="/external/icon16pxdropdowni502-mc9.svg"
-                className="clients-icon16px-dropdown"
+                className="design2-icon16px-dropdown"
               />
             </div>
           </div>
         </div>
-        <div className="clients-sidebar">
-          <div className="clients-top">
-            <div className="clients-logo">
+        <div className="design2-sidebar">
+          <div className="design2-top">
+            <div className="design2-logo">
               <img
                 alt="LogoI502"
                 src="/external/logoi502-hy9l.svg"
-                className="clients-logo1"
+                className="design2-logo1"
               />
-              <span className="clients-text08">
-                <span className="clients-text09">Manager</span>
+              <span className="design2-text08">
+                <span className="design2-text09">Manager</span>
                 <span>Pro</span>
               </span>
             </div>
-            <div className="clients-navigation">
-              <div className="clients-nav">
+            <div className="design2-navigation">
+              <div className="design2-nav">
                 <img
                   alt="IconDashboardI502"
                   src="/external/icondashboardi502-b4ok.svg"
-                  className="clients-icon-dashboard"
+                  className="design2-icon-dashboard"
                 />
-                <span className="clients-text11">
+                <span className="design2-text11">
                   <span>Dashboard</span>
                 </span>
               </div>
-              <div className="clients-nav01">
-                <div className="clients-left-side1">
+              <div className="design2-nav01">
+                <div className="design2-left-side1">
                   <img
                     alt="IconOrdersI502"
                     src="/external/iconordersi502-1r5l.svg"
-                    className="clients-icon-orders"
+                    className="design2-icon-orders"
                   />
-                  <span className="clients-text13">
+                  <span className="design2-text13">
                     <span>Orders</span>
                   </span>
                 </div>
                 <img
                   alt="Icon16pxDropdownI502"
                   src="/external/icon16pxdropdowni502-379.svg"
-                  className="clients-icon16px-dropdown1"
+                  className="design2-icon16px-dropdown1"
                 />
               </div>
-              <div className="clients-nav02">
-                <div className="clients-left-side2">
+              <div className="design2-nav02">
+                <div className="design2-left-side2">
                   <img
                     alt="IconProfileI502"
                     src="/external/iconprofilei502-90ti.svg"
-                    className="clients-icon-profile"
+                    className="design2-icon-profile"
                   />
-                  <span className="clients-text15">
+                  <span className="design2-text15">
                     <span>Clients</span>
                   </span>
                 </div>
                 <img
                   alt="Icon16pxDropdownI502"
                   src="/external/icon16pxdropdowni502-x6c5.svg"
-                  className="clients-icon16px-dropdown2"
+                  className="design2-icon16px-dropdown2"
                 />
               </div>
-              <div className="clients-nav03">
-                <div className="clients-left-side3">
+              <div className="design2-nav03">
+                <div className="design2-left-side3">
                   <img
                     alt="IconItemsI502"
                     src="/external/iconitemsi502-rmc.svg"
-                    className="clients-icon-items"
+                    className="design2-icon-items"
                   />
-                  <span className="clients-text17">
+                  <span className="design2-text17">
                     <span>Items</span>
                   </span>
                 </div>
                 <img
                   alt="Icon16pxDropdownI502"
                   src="/external/icon16pxdropdowni502-hfrm.svg"
-                  className="clients-icon16px-dropdown3"
+                  className="design2-icon16px-dropdown3"
                 />
               </div>
-              <div className="clients-nav04">
-                <div className="clients-left-side4">
+              <div className="design2-nav04">
+                <div className="design2-left-side4">
                   <img
                     alt="IconTransactionsI502"
                     src="/external/icontransactionsi502-6nyu.svg"
-                    className="clients-icon-transactions"
+                    className="design2-icon-transactions"
                   />
-                  <span className="clients-text19">
+                  <span className="design2-text19">
                     <span>Tranactions</span>
                   </span>
                 </div>
                 <img
                   alt="Icon16pxDropdownI502"
                   src="/external/icon16pxdropdowni502-vpar.svg"
-                  className="clients-icon16px-dropdown4"
+                  className="design2-icon16px-dropdown4"
                 />
               </div>
-              <div className="clients-nav05">
+              <div className="design2-nav05">
                 <img
                   alt="IconReportsI502"
                   src="/external/iconreportsi502-pcxaw.svg"
-                  className="clients-icon-reports"
+                  className="design2-icon-reports"
                 />
-                <span className="clients-text21">
+                <span className="design2-text21">
                   <span>Reports</span>
                 </span>
               </div>
-              <div className="clients-nav06">
+              <div className="design2-nav06">
                 <img
                   alt="IconMessagesI502"
                   src="/external/iconmessagesi502-oe8o.svg"
-                  className="clients-icon-messages"
+                  className="design2-icon-messages"
                 />
-                <span className="clients-text23">
+                <span className="design2-text23">
                   <span>Messages</span>
                 </span>
               </div>
-              <div className="clients-nav07">
+              <div className="design2-nav07">
                 <img
                   alt="IconSupportI502"
                   src="/external/iconsupporti502-j6df.svg"
-                  className="clients-icon-support"
+                  className="design2-icon-support"
                 />
-                <span className="clients-text25">
+                <span className="design2-text25">
                   <span>Support</span>
                 </span>
               </div>
-              <div className="clients-nav08">
+              <div className="design2-nav08">
                 <img
                   alt="IconSettingsI502"
                   src="/external/iconsettingsi502-9cgr.svg"
-                  className="clients-icon-settings"
+                  className="design2-icon-settings"
                 />
-                <span className="clients-text27">
+                <span className="design2-text27">
                   <span>Settings</span>
                 </span>
               </div>
             </div>
           </div>
-          <div className="clients-low-navigation">
-            <div className="clients-nav09">
+          <div className="design2-low-navigation">
+            <div className="design2-nav09">
               <img
                 alt="IconReportI502"
                 src="/external/iconreporti502-ct1h.svg"
-                className="clients-icon-report"
+                className="design2-icon-report"
               />
-              <span className="clients-text29">Report Bug</span>
+              <span className="design2-text29">Report Bug</span>
             </div>
-            <div className="clients-nav10">
+            <div className="design2-nav10">
               <img
                 alt="IconFAQI502"
                 src="/external/iconfaqi502-9hhz.svg"
-                className="clients-icon-faq"
+                className="design2-icon-faq"
               />
-              <span className="clients-text30">
+              <span className="design2-text30">
                 <span>FAQ</span>
               </span>
             </div>
           </div>
         </div>
-        <div className="clients-recent-orders">
-          <ClientsViewTable />
-        </div>
+        <ClientsViewTable clients={clients} />
       </div>
     </div>
   )
