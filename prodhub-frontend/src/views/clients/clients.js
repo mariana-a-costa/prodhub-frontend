@@ -5,48 +5,55 @@ import useClientApi from '../../hooks/ClientApi';
 import './clients.css'
 import './table.css'
 
+const getTag = (tag) => {
+  switch (tag) {
+    case 'pending':
+      return (
+          <span className="tag-status" id='pending'>Pending</span>
+      )
+    case 'approved':
+      return (
+        <span className="tag-status">
+          <span className="tag-status" id='approved'>Approved</span>
+        </span>
+      )
+    case 'paused':
+      return (
+        <span className="tag-status">
+          <span className="tag-status" id='paused'>Paused</span>
+        </span>
+      )
+    default:
+      return <span className="">--</span>;
+  };
+};
 
-const ClientsViewTable = () => {
+const ClientsViewTable = ({ clients }) => {
   return (
-    <div class="table-container">
-      <div class="table-row heading">
-        <div class="row-item">Category 1</div>
-        <div class="row-item">Category 2</div>
-        <div class="row-item">Category 3</div>
-        <div class="row-item">Category 4</div>
-        <div class="row-item">Category 5</div>
+    <div className="table-container">
+      <div className="table-row heading">
+        <div className="row-item">Nome</div>
+        <div className="row-item">Telemovel</div>
+        <div className="row-item">Email</div>
+        <div className="row-item">Projeto</div>
+        <div className="row-item">Estado</div>
       </div>
-      <div class="table-row">
-        <div class="row-item">Item 1</div>
-        <div class="row-item">Item 2</div>
-        <div class="row-item">Item 3</div>
-        <div class="row-item">Item 4</div>
-        <div class="row-item">Item 5</div>
-      </div>
-      <div class="table-row">
-        <div class="row-item">Item 1</div>
-        <div class="row-item">Item 2</div>
-        <div class="row-item">Item 3</div>
-        <div class="row-item">Item 4</div>
-        <div class="row-sub-container">
-          <div class="row-item">Sub item 1</div>
-          <div class="row-item">Sub item 2</div>
+      {clients.map((client) => (
+        <div key={client.clientID} className="table-row">
+          <div className="row-item">{client.firstName} {client.lastName}</div>
+          <div className="row-item">{client.phoneNumber}</div>
+          <div className="row-item">{client.email}</div>
+          <div className="row-item"> -- </div>
+          <div className="row-item">{getTag('approved')}</div>
         </div>
-      </div>
+      ))}
     </div>
-  )
-}
+  );
+};  
 
 
 const Clients = (props) => {
-
-  const clients = [
-    { name: 'Client1', projeto: 'Project1', dataDeOrcamento: '2023-01-01', recentes: 'Yes', status: 'Active' },
-    { name: 'Client2', projeto: 'Project2', dataDeOrcamento: '2023-02-01', recentes: 'No', status: 'Inactive' },
-    { name: 'Client3', projeto: 'Project3', dataDeOrcamento: '2023-03-01', recentes: 'Yes', status: 'Active' },
-    { name: 'Client4', projeto: 'Project4', dataDeOrcamento: '2023-04-01', recentes: 'No', status: 'Inactive' },
-  ];
-
+  const { clients } = useClientApi();
   return (
     <div className="design2-container">
       <Helmet>

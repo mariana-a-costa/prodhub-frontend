@@ -35,12 +35,6 @@
     transition: all 0.15s ease-in-out;
 }
 
-.row-item:hover {
-    cursor: pointer;
-    background-color: #F0F0F0;
-    /*   box-shadow: 0px 1px 4px rgba(0, 0, 0, .08); */
-}
-
 .row-sub-container {
     display: flex;
     flex-flow: column nowrap;
@@ -54,4 +48,26 @@
 .table-row:last-child,
 .row-sub-container .row-item:last-child {
     border-bottom: 0;
+}
+
+/* TAGGING */
+
+.tag-status {
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 13px;
+}
+.tag-status#approved {
+    background-color: #cbffbb;
+    color: #68a157;;
+}
+
+.tag-status#pending {
+    background-color: #bbe3ff;
+    color: rgb(80, 119, 171);
+}
+
+.tag-status#paused {
+    background-color: #f5eaad;
+    color: #ccb657;
 }
